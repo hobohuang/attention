@@ -59,7 +59,6 @@ export default {
 
 <style scoped>
 .border {
-  border: 1px solid black;
   width: 250px;
   height: 210px;
   margin: auto auto;

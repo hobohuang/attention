@@ -463,8 +463,9 @@ export default {
   position: relative;
   height: 700px;
   width: 700px;
-  box-sizing: border-box;
   background-color: #ccc;
+  border: 19px solid #f3a4b4;
+  border-radius: 12px;
 }
 
 .attention_stable-content-cards {
@@ -661,7 +662,7 @@ export default {
 .start_span_right-top {
   display: flex;
   justify-content: space-between;
-  margin: 40px 0;
+  margin: 60px 0;
 }
 .start_span_right-bottom {
   width: 330px;

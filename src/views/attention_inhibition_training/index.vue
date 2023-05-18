@@ -69,7 +69,7 @@
           <div class="acction_span_right-bottom"></div>
         </div>
       </div>
-      <div class="acction_span_start" v-if="start">
+      <div class="acction-span-start" v-if="start">
         <div class="maze-container">
           <Maze
             :strategy="strategy"
@@ -80,10 +80,33 @@
             :style="mazeStyle"
           ></Maze>
         </div>
-        <div class="choose-info">
-          <p>用时: {{ timmerShow }}</p>
-          <p>总共： {{ formData.count }}</p>
-          <p>剩余： {{ formData.count - trainResultTotal.length }}</p>
+        <div class="plate-chart">
+          <div class="choose-info">
+            <p>用时: {{ timmerShow }}</p>
+            <p>总共： {{ formData.count }}</p>
+            <p>
+              剩余：<span style="color: #ea0000">
+                {{ formData.count - trainResultTotal.length }}</span
+              >
+            </p>
+          </div>
+          <div class="start_span_right">
+            <div class="start_span_right-top">
+              <div class="start-green-wrapper">
+                <img src="../../assets/top.png" class="start-arrow-top" />
+                <div class="start-green"></div>
+              </div>
+              <div class="start-green-wrapper">
+                <img src="../../assets/top.png" class="start-arrow-bottom" />
+                <div class="start-green"></div>
+              </div>
+              <div class="start-green-wrapper">
+                <img src="../../assets/top.png" class="start-arrow-top" />
+                <div class="start-green"></div>
+              </div>
+            </div>
+            <div class="start_span_right-bottom"></div>
+          </div>
         </div>
       </div>
       <div class="attention_inhibition-widget-count" v-if="timeCountShow">
@@ -140,7 +163,7 @@ export default {
   methods: {
     submit() {
       this.start = true;
-      // this.timeCount();
+      this.timeCount();
     },
     onStart() {
       console.log("this is on onStart");
@@ -206,6 +229,9 @@ export default {
 .maze-container {
   width: 600px;
   height: 600px;
+  border: 19px solid #f3a4b4;
+  background-color: #fff;
+  border-radius: 12px;
 }
 
 .attention_inhibition-widget-count {
@@ -319,5 +345,89 @@ export default {
 .el-button + .el-button,
 .el-checkbox.is-bordered + .el-checkbox.is-bordered {
   margin-left: 25px !important;
+}
+/* 开始游戏CSS */
+.acction-span-start {
+  display: flex;
+  justify-content: space-around;
+  align-items: space-between;
+  flex-direction: row;
+  height: 100%;
+}
+.plate-chart {
+  margin-left: 32px;
+}
+.display-plate {
+  width: 240px;
+  height: 146px;
+  background-color: #f3a4b4;
+  padding-left: 90px;
+  padding-top: 40px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+}
+.plate-font {
+  margin-bottom: 15px;
+  color: #595959;
+}
+.start-green-wrapper {
+  height: max-content;
+  width: max-content;
+  position: relative;
+}
+.start-arrow-top {
+  position: absolute;
+  top: -5px;
+  left: 10px;
+  height: 80px;
+  width: 80px;
+  z-index: 0;
+}
+.start-arrow-bottom {
+  position: absolute;
+  bottom: -5px;
+  left: 10px;
+  height: 80px;
+  width: 80px;
+  z-index: 0;
+  display: inline-block;
+  transform: rotate(180deg);
+}
+.start-green {
+  position: inherit;
+  top: 0;
+  left: 0;
+  height: 120px;
+  width: 82px;
+  background-color: #b4da85;
+  border-radius: 6px;
+  border: #fff solid 8px;
+  margin: 45px 0;
+  z-index: 1;
+}
+
+.start_span_right-top {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0;
+}
+.start_span_right-bottom {
+  width: 330px;
+  height: 200px;
+  background: #ffffff;
+  border-radius: 6px 6px 6px 6px;
+  opacity: 1;
+}
+.choose-info {
+  width: 240px;
+  height: max-content;
+  background-color: #f3a4b4;
+  padding-left: 90px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
 }
 </style>

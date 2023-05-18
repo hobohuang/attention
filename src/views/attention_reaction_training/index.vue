@@ -73,17 +73,48 @@
           <div class="acction_span_right-bottom"></div>
         </div>
       </div>
+      <div class="acction-span-start" v-if="start">
+        <div class="shape-wapper">
+          <Shape
+            @close="stopShape"
+            :shape="currentShape"
+            :color="currentColor"
+          />
+        </div>
+        <div class="plate-chart">
+          <div class="display-plate">
+            <p>用时：{{ timmerShow }}</p>
+            <p>
+              选中次数：
+              <span>{{ greenCounter }}</span>
+            </p>
+            <p>
+              错误次数：
+              <span style="color: #ea0000">{{
+                currentTrainResult.errorNumber
+              }}</span>
+            </p>
+          </div>
+          <div class="start_span_right">
+            <div class="start_span_right-top">
+              <div class="start-green-wrapper">
+                <img src="../../assets/top.png" class="start-arrow-top" />
+                <div class="start-green"></div>
+              </div>
+              <div class="start-green-wrapper">
+                <img src="../../assets/top.png" class="start-arrow-bottom" />
+                <div class="start-green"></div>
+              </div>
+              <div class="start-green-wrapper">
+                <img src="../../assets/top.png" class="start-arrow-top" />
+                <div class="start-green"></div>
+              </div>
+            </div>
+            <div class="start_span_right-bottom"></div>
+          </div>
+        </div>
+      </div>
 
-      <div v-if="start">
-        <span>用时: {{ timmerShow }}</span>
-        <span>选中次数： {{ greenCounter }}</span>
-      </div>
-      <div v-if="start">
-        <span>错误次数: {{ currentTrainResult.errorNumber }}</span>
-      </div>
-      <div v-if="start">
-        <Shape @close="stopShape" :shape="currentShape" :color="currentColor" />
-      </div>
       <div class="attention_reaction_train-count" v-if="timeCountShow">
         {{ count }}
       </div>
@@ -159,7 +190,7 @@ export default {
     submit() {
       console.log("this is submit click");
       this.start = true;
-      this.timeCount();
+      // this.timeCount();
       this.trainResultTotal = [];
     },
     timerRuning() {
@@ -395,5 +426,87 @@ export default {
 .el-button + .el-button,
 .el-checkbox.is-bordered + .el-checkbox.is-bordered {
   margin-left: 25px !important;
+}
+/* 开始游戏CSS */
+.acction-span-start {
+  display: flex;
+  justify-content: space-around;
+  align-items: space-between;
+  flex-direction: row;
+  height: 100%;
+}
+.plate-chart {
+  margin-left: 32px;
+}
+.display-plate {
+  width: 310px;
+  height: 80px;
+  background-color: #f3a4b4;
+  padding-left: 20px;
+  padding-top: 20px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+}
+.plate-font {
+  margin-bottom: 15px;
+  color: #595959;
+}
+.start-green-wrapper {
+  height: max-content;
+  width: max-content;
+  position: relative;
+}
+.start-arrow-top {
+  position: absolute;
+  top: -5px;
+  left: 10px;
+  height: 80px;
+  width: 80px;
+  z-index: 0;
+}
+.start-arrow-bottom {
+  position: absolute;
+  bottom: -5px;
+  left: 10px;
+  height: 80px;
+  width: 80px;
+  z-index: 0;
+  display: inline-block;
+  transform: rotate(180deg);
+}
+.start-green {
+  position: inherit;
+  top: 0;
+  left: 0;
+  height: 80px;
+  width: 80px;
+  background-color: #b4da85;
+  border-radius: 6px;
+  border: #fff solid 8px;
+  margin: 45px 0;
+  z-index: 1;
+}
+
+.start_span_right-top {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+.start_span_right-bottom {
+  width: 330px;
+  height: 200px;
+  background: #ffffff;
+  border-radius: 6px 6px 6px 6px;
+  opacity: 1;
+}
+.shape-wapper {
+  width: 500px;
+  height: 500px;
+  background-color: #f3a4b4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
 }
 </style>
