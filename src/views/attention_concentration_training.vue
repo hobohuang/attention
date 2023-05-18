@@ -71,6 +71,9 @@
         </div>
       </div>
       <div class="acction-span-start" v-if="start">
+        <el-button size="normal" @click="$router.go(0)" class="goback-btn">
+          返回
+        </el-button>
         <div class="attention_concentration-content">
           <div
             v-for="(item, index) in cards"
@@ -446,6 +449,11 @@ export default {
 .el-button + .el-button,
 .el-checkbox.is-bordered + .el-checkbox.is-bordered {
   margin-left: 25px !important;
+}
+.goback-btn {
+  position: fixed;
+  top: 20px;
+  right: 80px;
 }
 /* 游戏开始css */
 .acction-span-start {

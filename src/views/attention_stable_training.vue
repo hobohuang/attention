@@ -71,6 +71,9 @@
         </div>
       </div>
       <div class="acction-span-start" v-if="start">
+        <el-button size="normal" @click="$router.go(0)" class="goback-btn">
+          返回
+        </el-button>
         <div class="attention_stable-content">
           <div class="left-cards">
             <div
@@ -596,6 +599,11 @@ export default {
 .el-button + .el-button,
 .el-checkbox.is-bordered + .el-checkbox.is-bordered {
   margin-left: 25px !important;
+}
+.goback-btn {
+  position: fixed;
+  top: 20px;
+  right: 80px;
 }
 
 /* 开始游戏CSS */

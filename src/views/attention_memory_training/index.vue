@@ -71,6 +71,9 @@
         </div>
       </div>
       <div class="acction-span-start" v-if="start">
+        <el-button size="normal" @click="$router.go(0)" class="goback-btn">
+          返回
+        </el-button>
         <!-- Game container -->
         <section class="memory-game">
           <!-- 2 Set of Cards -->
@@ -505,6 +508,11 @@ export default {
 .el-button + .el-button,
 .el-checkbox.is-bordered + .el-checkbox.is-bordered {
   margin-left: 25px !important;
+}
+.goback-btn {
+  position: fixed;
+  top: 20px;
+  right: 80px;
 }
 /* 开始游戏CSS */
 .acction-span-start {

@@ -13,11 +13,12 @@
               label-position="top"
             >
               <el-form-item label="等级" prop="count">
-                <el-select v-model="formData.level" placeholder="请选择等级">
+                <!-- <el-select v-model="formData.level" placeholder="请选择等级">
                   <el-option label="初级" value="1" key="1"> </el-option>
                   <el-option label="中级" value="2" key="2"> </el-option>
                   <el-option label="高级" value="3" key="3"> </el-option>
-                </el-select>
+                </el-select> -->
+                <select-block v-model="formData.level"></select-block>
               </el-form-item>
 
               <el-form-item label="次数" prop="count">
@@ -78,6 +79,9 @@
         </div>
       </div>
       <div class="acction-span-start" v-if="start">
+        <el-button size="normal" @click="$router.go(0)" class="goback-btn">
+          返回
+        </el-button>
         <div class="attention_span_train-content">
           <div
             v-for="item in cards"
@@ -133,6 +137,7 @@
 
 <script>
 import { savePationData } from "../api/index";
+import selectBlock from "../Components/selectBlock/index.vue";
 
 export default {
   data() {
@@ -154,6 +159,9 @@ export default {
       },
       trainResultTotal: [],
     };
+  },
+  components: {
+    selectBlock,
   },
   computed: {
     numberCards() {
@@ -429,7 +437,11 @@ export default {
   left: 330px;
   bottom: -30px;
 }
-
+.goback-btn {
+  position: fixed;
+  top: 20px;
+  right: 80px;
+}
 /* 开始游戏CSS */
 .acction-span-start {
   display: flex;
